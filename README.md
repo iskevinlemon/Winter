@@ -13,7 +13,10 @@ certain features may cause bugs. Use it in production at your own RISKS. <br>
 # Installation via CDN
 **CDN installation is recommended**
 ```html
-<!-- Coming soon -->
+<script src="https://cdn.jsdelivr.net/gh/iskevinlemon/Winter/winter/utils.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iskevinlemon/Winter/winter/core.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iskevinlemon/Winter/winter/router.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iskevinlemon/Winter/winter/snowflake.js"></script>
 ```
 
 # References
