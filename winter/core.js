@@ -115,7 +115,19 @@ Contributor(s):
         console.error(`Error: unable to load template: ${error.message}`);
       });
   };
-  
+
+  // const elementsWithExpression = document.querySelectorAll('[expression]');
+        
+  // elementsWithExpression.forEach(element => {
+  //     const expression = element.getAttribute('expression');
+  //     if (expression) {
+  //         const isTrue = eval(expression);
+  //         if (!isTrue) {
+  //             element.style.display = 'none'; // Hide the element
+  //         }
+  //     }
+  // });
+
 
   // Set initial value of a model
   Factory.$setModel = function (obj) {
@@ -126,7 +138,7 @@ Contributor(s):
   };
 
   // Set initial value of a model - 23
-  Factory.init = function (obj) {
+  Factory.$init = function (obj) {
     window[obj.model] = obj.value;
     updateBindElements(obj.model);
     updateModelElements(obj.model);
@@ -181,8 +193,7 @@ Contributor(s):
   // Please do not remove !
   Factory.$scope = "";
 
-  // Wait for the DOM to be fully loaded
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () { // DOMContentLoaded - START
     const wForElements = document.querySelectorAll("[for]");
     wForElements.forEach((element) => {
       const loopVar = element.getAttribute("for");
@@ -207,8 +218,22 @@ Contributor(s):
         });
       }
     });
+
+    // Remove element if js expression is false
+    const removeWhenFalse = document.querySelectorAll('[removeWhenFalse]');
+    removeWhenFalse.forEach(element => {
+        const expression = element.getAttribute('removeWhenFalse');
+        if (expression) {
+            const isTrue = eval(expression);
+            if (!isTrue) {
+                // element.style.display = 'none'; // Hide the element
+                element.remove(); // Remove the element
+            }
+        }
+    });
+
     
-  });
+  });// DOMContentLoaded - END
 
 })(window); // function attached to a window object - END
 
