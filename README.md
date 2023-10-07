@@ -42,6 +42,19 @@ $$("h1").html("Hello World");
 </script>
 ```
 
+**Populating a Dropdown List** <br>
+```html
+<select for="fruits"> <!-- Referencce the globally scoped fruits array -->
+    <option each></option>
+</select> 
+
+<script>
+$scope = { // define a global scope
+    fruits: ["Apple", "Banana", "Cherry", "Lemon"]
+};
+</script>
+```
+
 **Custom Component** <br>
 ```html
 <!-- Coming soon -->
