@@ -28,17 +28,21 @@ View the references for Winter JS: <br/>
 
 # At a glance
 
-**Tag Data Binding** <br>
+**Templating** <br>
 ```html
-<!-- Coming soon -->
-```
-
-**Custom component** <br>
-```html
-<!-- Coming soon -->
+<p>{{1+1}}</p> <!-- Will be rendered as <p>2</p> -->
 ```
 
 **DOM Manipulation** <br>
+```html
+<h1></h1> <!-- Hello World will be injected here -->
+
+<script>
+$$("h1").html("Hello World");
+</script>
+```
+
+**Custom Component** <br>
 ```html
 <!-- Coming soon -->
 ```

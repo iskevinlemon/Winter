@@ -86,6 +86,12 @@ function $jQueryErrorScreen(){
     return a;
   };
 
+  // Hide HTML
+  // @param {string} a - Object/ element to hide
+  Factory.Object.prototype.hide = function (a) {
+    this.style.display = "none";
+  };
+
   // Inner HTML
   // @param {string} a - String to inject
   Factory.Object.prototype.html = function (a) {

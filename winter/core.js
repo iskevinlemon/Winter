@@ -11,7 +11,7 @@ Winter JS - Modular Web Development Library
 
 Winter JS is currently still in development mode, 
 certain features may cause bugs. Use it in production at your own RISKS.
-Created by: Kevin (https://github.com/kevin-lem0n)
+Created by: Kevin (https://github.com/iskevinlemon)
 Contributor(s):
 - Damien (https://github.com/DameHetfield9803)
 */
@@ -25,35 +25,97 @@ Contributor(s):
   // Logging of current version
   $log(`Winter JS library installed, running on version ${WINTER_JS_VERSION}`);
 
-  // Custom templating
-  Factory.$template = function(options){
+  // Custom templating - not in use as of 7 Oct 2023
+  // Factory.$template = function(options){
+  //   if (!options || !options.path) {
+  //     console.error("Error: page name is required.");
+  //     return;
+  //   }
+  //   const {path, data, mount} = options;
+  //   // Mount point - where the page will be injected on
+  //   const $mountPoint = mount;
+  //   if($mountPoint == "" || $mountPoint == null || $mountPoint == undefined){
+  //     console.error("Error: mount point is not specified.")
+  //   }
+  //   else{
+  //     $mountPoint.setAttribute(`data-wroot-${Math.random()}`,"");
+  //   }
+  //   // const $dataIsBinded = `data-${$RandomBindTag()}`;
+  //   const $dataIsBinded = "";
+  //   // fetch(`/template/${page}.html`)
+  //   fetch(`${path}.html`)
+  //     .then(($rs) => $rs.text())
+  //     .then(($template) => {
+  //       const $compiledHTML = $template.replace(
+  //         /\{\{([^}]+)\}\}/g,
+  //         (match, key) => {return `${data[key]} ${$dataIsBinded}` || "";}
+  //       );
+  //       $mountPoint.template(`${$compiledHTML}`);
+  //     })
+  //     .catch((error) => {
+  //       console.error(`Error: unable to load template: ${error.message}`);
+  //     });
+  // }
+
+  Factory.$template = function (options) {
     if (!options || !options.path) {
       console.error("Error: page name is required.");
       return;
     }
-    const {path, data, mount} = options;
-
+    const { path, data, mount } = options;
+  
     // Mount point - where the page will be injected on
     const $mountPoint = mount;
-    if($mountPoint == "" || $mountPoint == null || $mountPoint == undefined){
-      console.error("Error: mount point is not specified.")
+    if (!$mountPoint) {
+      console.error("Error: mount point is not specified.");
+      return;
     }
-    // const $dataIsBinded = `data-${$RandomBindTag()}`;
-    const $dataIsBinded = "";
-    // fetch(`/template/${page}.html`)
+    // Generate a unique data attribute to identify the template
+    const templateId = `data-wroot-${Math.random()}`;
+    $mountPoint.setAttribute(templateId, "");
+    // fetch the template
     fetch(`${path}.html`)
       .then(($rs) => $rs.text())
       .then(($template) => {
+        // Replace data placeholders and evaluate JavaScript expressions in the template
         const $compiledHTML = $template.replace(
           /\{\{([^}]+)\}\}/g,
-          (match, key) => {return `${data[key]} ${$dataIsBinded}` || "";}
+          (match, expression) => {
+            try {
+              // Check if it's a data property first
+              if (data.hasOwnProperty(expression)) {
+                return data[expression];
+              }
+              // Use Function constructor to safely evaluate the JavaScript expression
+              const evaluatedExpression = new Function(`return ${expression}`)();
+              return evaluatedExpression !== undefined ? evaluatedExpression : "";
+            } catch (error) {
+              console.error(`Error evaluating expression: ${error.message}`);
+              return "";
+            }
+          }
         );
-        $mountPoint.template(`${$compiledHTML}`);
+        // Create a temporary element to parse and execute embedded scripts
+        const $tempElement = document.createElement("div");
+        $tempElement.innerHTML = $compiledHTML;
+  
+        // Execute embedded script tags
+        const scriptTags = $tempElement.querySelectorAll("script");
+        scriptTags.forEach((script) => {
+          const scriptContent = script.innerHTML;
+          const scriptElement = document.createElement("script");
+          scriptElement.innerHTML = scriptContent;
+          document.head.appendChild(scriptElement);
+        });
+  
+        // Inject the final compiled HTML with data, evaluated expressions, and executed scripts into the mount point
+        $mountPoint.innerHTML = $tempElement.innerHTML;
       })
       .catch((error) => {
         console.error(`Error: unable to load template: ${error.message}`);
       });
-  }
+  };
+  
 
   // Set initial value of a model
   Factory.$setModel = function (obj) {
@@ -119,27 +181,26 @@ Contributor(s):
   // Please do not remove !
   Factory.$scope = "";
 
-  // For
   // Wait for the DOM to be fully loaded
   document.addEventListener("DOMContentLoaded", function () {
-    const wForElements = document.querySelectorAll("[wRepeat]");
+    const wForElements = document.querySelectorAll("[for]");
     wForElements.forEach((element) => {
-      const loopVar = element.getAttribute("wRepeat");
+      const loopVar = element.getAttribute("for");
       var dataArray = $scope[loopVar];
 
       if (dataArray) {
-        const childElementTag = element.querySelector("[WForEach]").tagName.toLowerCase();
+        const childElementTag = element.querySelector("[each]").tagName.toLowerCase();
 
         // Remove the initial template element
-        const initialTemplate = element.querySelector("[WForEach]");
+        const initialTemplate = element.querySelector("[each]");
         if (initialTemplate) {
           element.removeChild(initialTemplate);
         }
 
         dataArray.forEach((item) => {
-          element.innerHTML += `<!-- $Scope items of ${loopVar}-->`;
+          element.innerHTML += `<!-- $scope items of ${loopVar}-->`;
           const newChildElement = document.createElement(childElementTag);
-          newChildElement.setAttribute("WForEach", item);
+          // newChildElement.setAttribute("each", item);
           newChildElement.textContent = item;
           newChildElement.value = item;
           element.appendChild(newChildElement);
