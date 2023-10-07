@@ -1,0 +1,71 @@
+/* 
+Custom CSS for Winter JS landing page.
+*/
+body {
+    font-family: Arial, Helvetica, sans-serif !important;
+    background-color: #F8F9FA;
+    background-image:  linear-gradient(#efefef 1px, transparent 1px), 
+    linear-gradient(to right, #efefef 1px, #F8F9FA 1px);
+    background-size: 20px 20px;
+    overflow-x: hidden;
+}
+.landing-text {
+    margin-top: 20vh !important;
+    font-size: 50px;
+}
+.btn{
+    padding: 10px 30px !important;
+    border-radius: .32em !important;
+    box-shadow: none !important;
+}
+.btn-outline-dark:hover{
+    background-color: #f0f0f0 !important;
+    color: #343A3F !important;
+}
+.text-red1{
+    color: #D0393A !important;
+}
+.navbar-light .navbar-toggler {
+    border: none !important;
+}
+@media only screen and (max-width: 1199px) {
+    .landing-image{
+        margin-top: 20vh;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .landing-image{
+        margin-top: 20vh !important;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .landing-image{
+        /* display: none; */
+        margin-top: 30vh !important;
+        margin-left: 50px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .landing-image{
+        display: block;
+    }
+}
+@media only screen and (max-width: 599px) {
+    /* .landing-image{
+        display: none;
+    } */
+}
+@media only screen and (max-width: 575px) {
+    .landing-text {
+        margin-top: 10vh !important;
+        font-size: 50px;
+    }
+    .sc-is-center{
+        text-align: center !important;
+    }
+    .landing-image{
+        margin-top: 0px !important;
+        display: block;
+        margin-left: 0px !important;
+    }
+}
