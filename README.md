@@ -1,7 +1,7 @@
 # Winter JS
 
 Modular Web Development Library. Feel free to submit a pull request and contribute.
-<br/><br/>
+<br/>
 
 <b>Notice</b>
 Winter JS is currently still in development mode, 
