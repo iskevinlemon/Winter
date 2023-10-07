@@ -32,6 +32,26 @@ View the references for Winter JS: <br/>
 ```html
 <p>{{1+1}}</p> <!-- Will be rendered as <p>2</p> -->
 ```
+**Advance Templating** <br>
+```html
+<!-- script.js -->
+<script>
+$template({
+    mount: $$("#root"),
+    path: "/template/template",
+    data: {
+        blogTitle: "Hello World",
+        blogText: "Lorem ipsum..."
+    }
+})
+</script>
+```
+
+```html
+<!-- template.html -->
+<h1>{{blogTitle}}</h1>
+<p>{{blogText}}</p>
+```
 
 **DOM Manipulation** <br>
 ```html
