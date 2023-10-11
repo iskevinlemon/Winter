@@ -30,7 +30,12 @@ body {
 }
 @media only screen and (max-width: 1199px) {
     .landing-image{
-        margin-top: 20vh;
+        margin-top: 10vh;
+    }
+}
+@media only screen and (max-width: 1179px) {
+    .landing-image{
+        margin-top: 5vh !important;
     }
 }
 @media only screen and (max-width: 991px) {

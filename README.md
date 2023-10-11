@@ -1,5 +1,4 @@
 # Winter JS
-
 Modular Web Development Library. Feel free to submit a pull request and contribute.
 <br/>
 
@@ -8,7 +7,7 @@ Winter JS is currently still in development mode,
 certain features may cause bugs. Use it in production at your own RISKS. <br>
 
 # Important
-**Winter JS DOES NOT work with jQuery.**
+**Winter JS DOES NOT work with jQuery.** The use of Bootstrap 5 is recommended instead of Bootstrap 4.
 
 # Installation via CDN
 **CDN installation is recommended**
