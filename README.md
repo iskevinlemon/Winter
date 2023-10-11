@@ -14,10 +14,10 @@ certain features may cause bugs. Use it in production at your own RISKS. <br>
 **CDN installation is recommended**
 ```html
 <!-- Please DO NOT change the order/ arrangements of the CDN -->
-<script src="https://cdn.jsdelivr.net/gh/iskevinlemon/Winter/winter/utils.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/iskevinlemon/Winter/winter/core.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/iskevinlemon/Winter/winter/router.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/iskevinlemon/Winter/winter/snowflake.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iskevinlemon/Winter/lib/utils.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iskevinlemon/Winter/lib/core.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iskevinlemon/Winter/lib/router.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iskevinlemon/Winter/lib/snowflake.js"></script>
 ```
 
 # References
