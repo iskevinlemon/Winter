@@ -25,8 +25,14 @@ View the references for Winter JS: <br/>
 <!-- Coming soon -->
 ```
 
-# At a glance
+# Winter JS App Template
+Download the template <a>here</a>. <br/>
+This template includes boilerplate code for:
+1. Templating
+2. Custom component
+3. Routing
 
+# At a glance
 **Templating** <br>
 ```html
 <p>{{1+1}}</p> <!-- Will be rendered as <p>2</p> -->
@@ -71,6 +77,20 @@ $$("h1").html("Hello World");
 $scope = { // define a global scope
     fruits: ["Apple", "Banana", "Cherry", "Lemon"]
 };
+</script>
+```
+
+**Custom directives** <br>
+```html
+<form @submit="doSomething()"> <!-- Referencing doSomething() function-->
+    <input name="username" required/>
+    <button>Submit</button>
+</form>
+
+<script>
+function doSomething() {
+    // action goes here
+}
 </script>
 ```
 
