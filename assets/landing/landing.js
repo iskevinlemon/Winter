@@ -18,8 +18,8 @@ $template({
     mount: $$("#root"),
     path: "/assets/landing/template/landing",
     data:{
-        textOne: "Modular",
-        textTwo: "Web Development Library",
+        textOne: "Productivity focused ",
+        textTwo: "web development library",
         keyFeatures: "Reusable components, partial view, data binding, state management, routing and much more.",
         githubUrl: "https://github.com/iskevinlemon/Winter",
         landingImage:`

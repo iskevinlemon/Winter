@@ -1,5 +1,7 @@
 # Winter JS
-Modular Web Development Library. Feel free to submit a pull request and contribute.
+Productivity focused web development library. You can use Winter JS to build dynamic sites 
+or you can just use some of its functionality.
+Feel free to submit a pull request and contribute.
 <br/>
 
 <b>Notice</b>
@@ -25,13 +27,6 @@ View the references for Winter JS: <br/>
 <!-- Coming soon -->
 ```
 
-# Winter JS App Template
-Download the template <a>here</a>. <br/>
-This template includes boilerplate code for:
-1. Templating
-2. Custom component
-3. Routing
-
 # At a glance
 **Templating** <br>
 ```html
@@ -43,7 +38,7 @@ This template includes boilerplate code for:
 <script>
 $template({
     mount: $$("#root"),
-    path: "/template/template",
+    templateUrl: "/template/template",
     data: {
         blogTitle: "Hello World",
         blogText: "Lorem ipsum..."
@@ -90,6 +85,23 @@ $scope = { // define a global scope
 <script>
 function doSomething() {
     // action goes here
+}
+</script>
+```
+
+**Reactivity (counter example)** <br>
+```html
+<h1 w-model-bind="myCount"></h1> <!-- bind the value of "myCount" -->
+
+<button onclick="dynamic('myCount', myCount++);">
+    Add
+</button>
+
+<script>
+var myCount = dynamic(1); // set the initial value of "myCount"
+
+function add(){
+    dynamic('myCount', myCount++); // update the value of "myCount"
 }
 </script>
 ```
