@@ -16,7 +16,7 @@ $component({
 
 $template({
     mount: $$("#root"),
-    path: "/assets/landing/template/landing",
+    templateUrl: "/assets/landing/template/landing",
     data:{
         textOne: "Productivity focused ",
         textTwo: "web development library",
