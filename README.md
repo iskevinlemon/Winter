@@ -64,7 +64,7 @@ $$("h1").html("Hello World");
 
 **Populating a Dropdown List** <br>
 ```html
-<select for="fruits"> <!-- Referencce the globally scoped fruits array -->
+<select for="fruits"> <!-- Reference the globally scoped fruits array -->
     <option each></option>
 </select> 
 
