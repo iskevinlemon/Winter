@@ -98,10 +98,10 @@ function doSomething() {
 </button>
 
 <script>
-var myCount = dynamic(1); // set the initial value of "myCount"
+var myCount = useDynamic(1); // set the initial value of "myCount"
 
 function add(){
-    dynamic('myCount', myCount++); // update the value of "myCount"
+    useDynamic('myCount', myCount++); // update the value of "myCount"
 }
 </script>
 ```
