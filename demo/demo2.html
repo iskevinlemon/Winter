@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo 2</title>
+    <!-- Please DO NOT change the order/ arrangements of the CDN -->
+    <script src="https://cdn.jsdelivr.net/gh/iskevinlemon/Winter/lib/utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/iskevinlemon/Winter/lib/core.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/iskevinlemon/Winter/lib/router.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/iskevinlemon/Winter/lib/snowflake.js"></script>
+</head>
+<body>
+    <style>body{font-family: Arial, Helvetica, sans-serif !important;}</style>
+
+    <h1>Demo 2</h1>
+    <p>Reactivity using <mark>useDynamic()</mark> in select</p>
+    <hr></hr>
+
+    <select>
+        <option w-model-bind="myCount"></option>
+    </select>
+
+    <button onclick="useDynamic('myCount', myCount++);">
+        Add
+    </button>
+    
+    <script>
+    var myCount = useDynamic(0); // set the initial value of "myCount"
+    
+    function add(){
+        useDynamic('myCount', myCount++); // update the value of "myCount"
+    }
+    </script>
+    
+</body>
+</html>
